@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ excursion.name }} | {% endblock title %}
+
+{% block content %}
+    <div class="w-full bg-center bg-cover h-64 lg:h-80"
+         style="background-image: url({% static 'img/gorod.jpg' %});">
+        <div class="w-full h-full bg-gray-900 bg-opacity-50 flex items-center">
+            <div class="max-w-full mx-auto px-2 sm:px-4 lg:px-8 lg:text-center">
+                <h1 class="pt-6 text-4xl font-bold text-amber-400 lg:text-5xl">Экскурсии в&nbsp;Евпатории</h1>
+                <p class="mt-6 text-xl text-white max-w-3xl">Индивидуальные и групповые туры от лучших гидов города.</p>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock content %}

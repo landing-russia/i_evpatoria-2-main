@@ -1,0 +1,7 @@
+/node_modules
+.env
+
+deploy.sh
+nbproject
+.directory
+_ide_helper.php

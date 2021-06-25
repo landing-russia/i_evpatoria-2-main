@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+
+
+{% block title %}Профиль | {% endblock %}
+
+{% block content %}
+
+    <div class="min-h-full flex flex-col py-8 lg:py-12 sm:px-6 lg:px-8">
+
+        <div class="sm:mx-auto sm:w-full sm:max-w-md">
+            <h2 class="mt-6 text-center text-3xl font-bold text-gray-700">Профиль</h2>
+        </div>
+        <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+            <div class=" flex flex-col items-center bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+                {% if user_obj.avatar %}
+                    <div class="h-36 w-36 mb-5 rounded-full bg-cover border-2 border-gray-300 shadow"
+                         style="background-image: url({{ user_obj.avatar.url }});">
+                    </div>
+                {% elif user_obj.first_name %}
+                    <div class="h-20 w-20 mb-5 bg-gray-100 rounded-full text-gray-600 font-semibold border-2 border-gray-300 shadow flex justify-center items-center overflow-hidden">
+                        <span class="text-5xl">{{ user_obj.first_name|first|upper }}</span>
+                    </div>
+                {% else %}
+                    <div class="h-20 w-20 mb-5 bg-gray-100 rounded-full text-gray-600 font-semibold border-2 border-gray-300 shadow flex justify-center items-center overflow-hidden">
+                        <span class="text-5xl">{{ user_obj.email|first|upper }}</span>
+                    </div>
+                {% endif %}
+                {% if user_obj.first_name and user_obj.last_name %}
+                    <div class="text-xl font-bold text-gray-700 mb-5">
+                        {{ user_obj.first_name }} {{ user_obj.last_name }}
+                    </div>
+                {% elif user_obj.first_name %}
+                    <div class="text-xl font-bold text-gray-700 mb-5">
+                        {{ user_obj.first_name }}
+                    </div>
+                {% endif %}
+                {% if user_obj.guide and user_obj.bio %}
+                    <div class="text-sm font-medium text-gray-700 w-full mb-5">
+                        {{ user_obj.bio|safe }}
+                    </div>
+                {% endif %}
+                {% if user_obj.guide and user_obj.phone %}
+                    <div class="text-xl font-semibold text-gray-700 mb-5">
+                        <p class="text-base text-gray-600 text-center mt-3">Телефон</p>
+                        <p class="text-xl font-bold text-gray-700 text-center mt-2">
+                            <a href=”tel:{{ user_obj.phone }}” class="sm:hidden">{{ user_obj.phone.as_international }}</a>
+                            <span class="hidden sm:inline">{{ user_obj.phone.as_international }}</span>
+                        </p>
+                    </div>
+                {% endif %}
+                {% if user == user_obj %}
+                    <a href="{% url 'users:update' %}"
+                       class="w-full flex justify-center mt-5 py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-amber-500 hover:bg-amber-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-400">Изменить
+                        профиль</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

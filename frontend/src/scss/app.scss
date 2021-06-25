@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+  [type='text'],
+  [type='email'],
+  [type='url'],
+  [type='password'],
+  [type='number'],
+  [type='date'],
+  [type='datetime-local'],
+  [type='month'],
+  [type='search'],
+  [type='tel'],
+  [type='time'],
+  [type='week'],
+  [multiple],
+  textarea,
+  select {
+    @apply appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-amber-500 focus:border-amber-500 sm:text-sm;
+  }
+  textarea {
+    @apply w-full;
+  }
+}
+
+
+@layer components {
+
+  .navbar-link {
+    @apply px-3 py-2 rounded-md text-base font-medium focus:outline-none;
+  }
+
+  .navbar-link.non-active {
+    @apply text-gray-600 hover:bg-gray-100 hover:text-gray-700 focus:text-gray-700 focus:bg-gray-100;
+  }
+
+  .navbar-link.active {
+    @apply text-white bg-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-opacity-50 cursor-default;
+  }
+
+  .navbar-button {
+    @apply rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 focus:ring-opacity-50;
+  }
+
+  .navbar-button.icon {
+    @apply p-1 text-gray-400 hover:text-gray-500;
+  }
+
+  .navbar-button.user {
+    @apply bg-gray-100 flex text-sm;
+  }
+
+  .navbar-dropdown-item {
+    @apply block px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 focus:outline-none focus:bg-gray-100;
+  }
+
+  .mobile-menu-button {
+    @apply inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-amber-500;
+  }
+
+  .mobile-menu-link {
+    @apply block px-3 py-2 rounded-md text-base font-medium;
+  }
+
+  .mobile-menu-link.non-active {
+    @apply text-gray-600 hover:text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100;
+  }
+
+  .mobile-menu-link.active {
+    @apply bg-amber-500 text-white focus:outline-none focus:bg-amber-600;
+  }
+
+  .login {
+    @apply space-y-6;
+  }
+
+  .login label {
+    @apply block text-sm font-medium text-gray-700;
+  }
+
+  .signup {
+    @apply space-y-6;
+  }
+
+  .signup label {
+    @apply block text-sm font-medium text-gray-700;
+  }
+
+  .password_change {
+    @apply space-y-6;
+  }
+
+  .password_change label {
+    @apply block text-sm font-medium text-gray-700;
+  }
+
+  .password_reset {
+    @apply space-y-6;
+  }
+
+  .password_reset label {
+    @apply block text-sm font-medium text-gray-700;
+  }
+
+  .update-form {
+    @apply space-y-6 text-sm;
+
+    input[type='checkbox'] {
+      @apply my-3;
+    }
+
+    label[for=avatar-clear_id] {
+      @apply my-3 inline-flex;
+    }
+  }
+
+  .update-form a {
+    @apply block font-medium text-amber-600 hover:text-amber-500 focus:outline-none focus:text-amber-500;
+  }
+
+  .update-form .update-input {
+    @apply appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-amber-500 focus:border-amber-500 sm:text-sm;
+  }
+
+  .update-form label {
+    @apply block text-sm font-medium text-gray-700;
+  }
+
+  .bg-white ul.errorlist li {
+    @apply text-red-600 font-semibold;
+  }
+
+}

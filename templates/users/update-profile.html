@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Изменить профиль | {% endblock %}
+
+{% block content %}
+
+    <div class="min-h-full flex flex-col py-8 lg:py-12 sm:px-6 lg:px-8">
+
+        <div class="sm:mx-auto sm:w-full sm:max-w-md">
+            <h2 class="mt-6 text-center text-3xl font-bold text-gray-700">Изменить профиль</h2>
+        </div>
+        <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+            <div class=" flex flex-col items-center bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+                {% if user.avatar %}
+                    <div class="h-36 w-36 rounded-full bg-cover border-2 border-gray-300 shadow"
+                         style="background-image: url({{ user.avatar.url }});">
+                    </div>
+                {% elif user.first_name %}
+                    <div class="h-20 w-20 bg-gray-100 rounded-full text-gray-600 font-semibold border-2 border-gray-300 shadow flex justify-center items-center overflow-hidden">
+                        <span class="text-5xl">{{ user.first_name|first|upper }}</span>
+                    </div>
+                {% else %}
+                    <div class="h-20 w-20 bg-gray-100 rounded-full text-gray-600 font-semibold border-2 border-gray-300 shadow flex justify-center items-center overflow-hidden">
+                        <span class="text-5xl">{{ user.email|first|upper }}</span>
+                    </div>
+                {% endif %}
+
+                {% include 'mixins/form/update-form.html' with form=form  %}
+                <a href="{% url 'account_change_password' %}" class="py-2 mt-6 font-medium text-amber-600 hover:text-amber-500 focus:outline-none focus:text-amber-500">Изменить пароль</a>
+            </div>
+        </div>
+    </div>
+<script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+<script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+{% endblock %}
