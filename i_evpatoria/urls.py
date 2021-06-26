@@ -7,13 +7,13 @@ from .views import *
 
 
 urlpatterns = [
-    path('', include('excursions.urls', namespace='excursions')),
     path('contacts', contacts, name='contacts'),
     path('users/', include('users.urls', namespace='users')),
     path('superadmin/', admin.site.urls),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('accounts/', include('allauth.urls')),
     path('guide-admin/', guide_site.urls),
+    path('', include('excursions.urls', namespace='excursions')),
 ]
 
 if settings.DEBUG:
