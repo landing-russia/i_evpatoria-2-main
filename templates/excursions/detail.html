@@ -12,9 +12,46 @@
     </div>
 </div>
 
-<div class="max-w-prose px-2 sm:px-4 lg:px-8">
+<div class="max-w-prose mx-auto my-12 prose lg:prose-xl px-2 sm:px-4 lg:px-8">
     {{ excursion.description|safe }}
+
+    <div class="relative my-10">
+        <div class="absolute inset-0 flex items-center" aria-hidden="true">
+            <div class="w-full border-t border-gray-300"></div>
+        </div>
+        <div class="relative flex justify-center">
+            <span class="px-3 bg-gray-100 text-xl font-medium text-gray-700">
+                Детали
+            </span>
+        </div>
+    </div>
+
+    <p>Стоимость:
+        {% if excursion.types == 'group' %}
+        <span class="font-bold">{{ excursion.price }}</span>&nbsp;<span class="font-semibold">руб</span>
+        {% if excursion.price_child %}
+        / <span class="font-bold">{{ excursion.price_child }}</span>&nbsp;<span class="font-semibold">руб
+        </span> (детский)
+        {% endif %}
+        {% else %}
+        <span class="font-bold text-xl">{{ excursion.price_group }}</span>&nbsp;<span
+            class="text-sm font-semibold">руб</span></p>
+    {% endif %}
+    {% if excursion.max_people_count %}
+    <span class="block">Максимальное кол-во человек: <span
+            class="font-bold text-xl">{{excursion.max_people_count}}</span></span>
+    {% endif %}
+    {% if excursion.duration %}
+    <span class="block">Продолжительность: <span class="font-bold text-xl">{{excursion.duration}}</span></span>
+    {% endif %}
+    {% if excursion.location %}
+    <span class="block">Локация: <span class="font-bold text-xl">{{excursion.location}}</span></span>
+    {% endif %}
+
 </div>
+<div class="max-w-2xl mx-auto mb-20 px-2 sm:px-4 lg:px-8">
+    <a class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-xl font-medium text-white bg-amber-500 hover:bg-amber-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-400"
+        href="{{excursion.guide.get_absolute_url}}">Связаться с гидом</a>
 
-
+</div>
 {% endblock content %}

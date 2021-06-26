@@ -3,7 +3,7 @@
         <div class="flex items-center justify-between h-16">
             <div class="flex items-center">
                 <div class="flex-shrink-0">
-                    {% if section == "excursions" %}
+                    {% if request.path == '/' %}
                         <img class="block h-12 w-auto" src="/media/img/logo.svg" alt="Я-Евпатория!"/>
                     {% else %}
                         <a href="{% url 'excursions:home' %}" class="focus:outline-none"><img class="block h-12 w-auto"
